@@ -38,6 +38,15 @@
  * sizeof(x) * CHAR_BIT -> number of bits in type x
  */
 
+#if CHAR_MAX == UCHAR_MAX
+#define PLAIN_CHAR_IS_SIGNED 0
+#elif CHAR_MAX == SCHAR_MAX
+#define PLAIN_CHAR_IS_SIGNED 1
+#else
+#error "Can't determine if char is signed or unsigned"
+#endif
+
+
 typedef   signed char  schar;
 typedef unsigned char  uchar;
 
